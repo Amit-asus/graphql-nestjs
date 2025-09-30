@@ -7,12 +7,11 @@ import {
   ResolveField,
   Resolver,
 } from '@nestjs/graphql';
-import { User } from '../graphlql/models/User';
-import { mockUserSettings } from '../__mocks__/mockUserSettings';
-import { UserSetting } from '../graphlql/models/UserSetting';
-import { CreateUserInput } from '../graphlql/utils/CreateUserInput';
-import { UserService } from './UserService';
-import { UserSettingService } from './userSettingService';
+import { User } from '../../graphlql/models/User';
+import { UserSetting } from '../../graphlql/models/UserSetting';
+import { CreateUserInput } from '../../graphlql/utils/CreateUserInput';
+import { UserService } from '../services/UserService';
+import { UserSettingService } from '../services/userSettingService';
 
 let incrementId = 11;
 @Resolver((of) => UserSetting)
@@ -30,11 +29,6 @@ export class UserResolver {
   @Query(() => [User])
   async getUsers(): Promise<User[]> {
     return await this.userService.getUsers();
-  }
-
-  @ResolveField((returns) => UserSetting, { name: 'settings' })
-  getUserSetting(@Parent() user: User): UserSetting | undefined {
-    return mockUserSettings.find((setting) => setting.userId === user.id);
   }
 
   @Mutation((returns) => User)

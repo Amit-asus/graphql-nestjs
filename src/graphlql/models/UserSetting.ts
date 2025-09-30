@@ -14,8 +14,8 @@ export class UserSetting {
   receivedNotification: boolean;
 
   @Column()
-  @Field({ nullable: false, defaultValue: 'false' })
-  receiveEmails?: string;
+  @Field({ nullable: false, defaultValue: false })
+  receiveEmails?: boolean;
 }
 
 //1 : 1 relationship with user

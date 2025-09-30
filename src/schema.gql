@@ -5,8 +5,7 @@
 type UserSetting {
   userId: Int!
   receivedNotification: Boolean!
-  receiveEmails: String!
-  settings: UserSetting!
+  receiveEmails: Boolean!
   setting: UserSetting
 }
 
@@ -29,8 +28,8 @@ type Mutation {
 
 input createUserSettingsInput {
   userId: Int!
-  receiveNotification: Float
-  receiveEmail: Float
+  receivedNotification: Boolean
+  receiveEmails: Boolean
 }
 
 input CreateUserInput {
